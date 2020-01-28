@@ -11,6 +11,7 @@
 
 
     <meta name="description" content="注：首先声明，文章只是平时的学习笔记，用于加深记忆以及以后方便查找的功能。 1.一些基本的常识python的一些基本语法结构要比c++简单的多，而且写起来很方便，没有像c++那么多的限制，有了一些c++的基础学起来相对容易一些：  关于编译器 ，如果不进行大型的项目，直接创建一个py结尾的文件即可编写python代码，如果运行一些比较大的项目，应该需要下载pychram，这个编译器用起来方便一些，">
+<meta name="keywords" content="编程,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于python的一些学习">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;09&#x2F;%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0&#x2F;index.html">
@@ -18,7 +19,7 @@
 <meta property="og:description" content="注：首先声明，文章只是平时的学习笔记，用于加深记忆以及以后方便查找的功能。 1.一些基本的常识python的一些基本语法结构要比c++简单的多，而且写起来很方便，没有像c++那么多的限制，有了一些c++的基础学起来相对容易一些：  关于编译器 ，如果不进行大型的项目，直接创建一个py结尾的文件即可编写python代码，如果运行一些比较大的项目，应该需要下载pychram，这个编译器用起来方便一些，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-11-09T13:51:57.793Z">
+<meta property="og:updated_time" content="2020-01-28T10:29:47.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
 
@@ -145,6 +146,10 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
@@ -177,14 +182,23 @@
 <li><strong>和以前学的c++的差别</strong>，用了几天感觉差别还是有一些，但是不得不说python是比较方便的软件，而且相比c++代码量比较少，只举一个例子，比如说创建一个函数：</li>
 </ol>
 <p>用python</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> n==<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> func(n<span class="number">-1</span>)+func(n<span class="number">-2</span>)</span><br><span class="line">n=int(input(<span class="string">'请输入一个数; '</span>))</span><br><span class="line">result=func(n)</span><br><span class="line">print(<span class="string">'%d 的斐波那契函数为 %d'</span> %(n,result))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">(n)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">if</span> n==<span class="hljs-number">1</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">elif</span> n==<span class="hljs-number">2</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        <span class="hljs-keyword">return</span> func(n<span class="hljs-number">-1</span>)+func(n<span class="hljs-number">-2</span>)</span><br><span class="line">n=int(input(<span class="hljs-string">'请输入一个数; '</span>))</span><br><span class="line">result=func(n)</span><br><span class="line">print(<span class="hljs-string">'%d 的斐波那契函数为 %d'</span> %(n,result))</span><br></pre></td></tr></table></figure>
 <p>用c++</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">1</span>||i==<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="keyword">return</span> func(i<span class="number">-1</span>)+func(i<span class="number">-2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,result;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入一个数: "</span>;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;i;</span><br><span class="line">    result=func(i);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; i &lt;&lt;<span class="string">"的斐波那契函数为："</span>&lt;&lt;result&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(i==<span class="hljs-number">1</span>||i==<span class="hljs-number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> func(i<span class="hljs-number">-1</span>)+func(i<span class="hljs-number">-2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> i,result;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入一个数: "</span>;</span><br><span class="line">	<span class="hljs-built_in">cin</span>&gt;&gt;i;</span><br><span class="line">    result=func(i);</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt; i &lt;&lt;<span class="hljs-string">"的斐波那契函数为："</span>&lt;&lt;result&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果很显然，同样是用递归实现一个斐波那契函数，代码量还是差很多的，关于函数和类的封装继承和多态区别还是有的，但是不大，接下来介绍一个python非常适用的领域爬虫。</p>
-<h2 id="2-模拟有道词典实现单词的翻译（爬虫）"><a href="#2-模拟有道词典实现单词的翻译（爬虫）" class="headerlink" title="2.模拟有道词典实现单词的翻译（爬虫）"></a>2.模拟有道词典实现单词的翻译（爬虫）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="keyword">import</span> json  <span class="comment">#轻量级的数据交换模式</span></span><br><span class="line">num=input(<span class="string">'请输入要翻译的内容：'</span>)</span><br><span class="line">url=<span class="string">'http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule'</span></span><br><span class="line">data=&#123;&#125;</span><br><span class="line">data[<span class="string">'i'</span>]= num</span><br><span class="line">data[<span class="string">'from'</span>]= <span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'to'</span>]=<span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'smartresult'</span>]= <span class="string">'dict'</span></span><br><span class="line">data[<span class="string">'client'</span>]= <span class="string">'fanyideskweb'</span></span><br><span class="line">data[<span class="string">'salt'</span>]= <span class="string">'15727641027462'</span></span><br><span class="line">data[<span class="string">'sign'</span>]= <span class="string">'13305999ab8cf444f7ddbc11b62baffd'</span></span><br><span class="line">data[<span class="string">'ts'</span>]= <span class="string">'1572764102746'</span></span><br><span class="line">data[<span class="string">'bv'</span>]= <span class="string">'7d4ac98e0e04505e57a74dd5992cc541'</span></span><br><span class="line">data[<span class="string">'doctype'</span>]= <span class="string">'json'</span></span><br><span class="line">data[<span class="string">'version'</span>]= <span class="string">'2.1'</span></span><br><span class="line">data[<span class="string">'keyfrom'</span>]= <span class="string">'fanyi.web'</span></span><br><span class="line">data[<span class="string">'action'</span>]= <span class="string">'FY_BY_CLICKBUTTION'</span></span><br><span class="line">data=urllib.parse.urlencode(data).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">response=urllib.request.urlopen(url,data)</span><br><span class="line">html=response.read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">a=json.loads(html)</span><br><span class="line">b=a[<span class="string">'translateResult'</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="string">'tgt'</span>]</span><br><span class="line">print(<span class="string">'翻译结果为: %s'</span> %b)</span><br></pre></td></tr></table></figure>
+<h2 id="2-模拟有道词典实现单词的翻译（爬虫）"><a href="#2-模拟有道词典实现单词的翻译（爬虫）" class="headerlink" title="2.模拟有道词典实现单词的翻译（爬虫）"></a>2.模拟有道词典实现单词的翻译（爬虫）</h2><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> urllib.request</span><br><span class="line"><span class="hljs-keyword">import</span> urllib.parse</span><br><span class="line"><span class="hljs-keyword">import</span> json  <span class="hljs-comment">#轻量级的数据交换模式</span></span><br><span class="line">num=input(<span class="hljs-string">'请输入要翻译的内容：'</span>)</span><br><span class="line">url=<span class="hljs-string">'http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule'</span></span><br><span class="line">data=&#123;&#125;</span><br><span class="line">data[<span class="hljs-string">'i'</span>]= num</span><br><span class="line">data[<span class="hljs-string">'from'</span>]= <span class="hljs-string">'AUTO'</span></span><br><span class="line">data[<span class="hljs-string">'to'</span>]=<span class="hljs-string">'AUTO'</span></span><br><span class="line">data[<span class="hljs-string">'smartresult'</span>]= <span class="hljs-string">'dict'</span></span><br><span class="line">data[<span class="hljs-string">'client'</span>]= <span class="hljs-string">'fanyideskweb'</span></span><br><span class="line">data[<span class="hljs-string">'salt'</span>]= <span class="hljs-string">'15727641027462'</span></span><br><span class="line">data[<span class="hljs-string">'sign'</span>]= <span class="hljs-string">'13305999ab8cf444f7ddbc11b62baffd'</span></span><br><span class="line">data[<span class="hljs-string">'ts'</span>]= <span class="hljs-string">'1572764102746'</span></span><br><span class="line">data[<span class="hljs-string">'bv'</span>]= <span class="hljs-string">'7d4ac98e0e04505e57a74dd5992cc541'</span></span><br><span class="line">data[<span class="hljs-string">'doctype'</span>]= <span class="hljs-string">'json'</span></span><br><span class="line">data[<span class="hljs-string">'version'</span>]= <span class="hljs-string">'2.1'</span></span><br><span class="line">data[<span class="hljs-string">'keyfrom'</span>]= <span class="hljs-string">'fanyi.web'</span></span><br><span class="line">data[<span class="hljs-string">'action'</span>]= <span class="hljs-string">'FY_BY_CLICKBUTTION'</span></span><br><span class="line">data=urllib.parse.urlencode(data).encode(<span class="hljs-string">'utf-8'</span>)</span><br><span class="line">response=urllib.request.urlopen(url,data)</span><br><span class="line">html=response.read().decode(<span class="hljs-string">'utf-8'</span>)</span><br><span class="line">a=json.loads(html)</span><br><span class="line">b=a[<span class="hljs-string">'translateResult'</span>][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][<span class="hljs-string">'tgt'</span>]</span><br><span class="line">print(<span class="hljs-string">'翻译结果为: %s'</span> %b)</span><br></pre></td></tr></table></figure>
 <p>其中 <code>url=&#39;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&#39;</code><br>表示所爬取的链接地址，<code>data</code> 代表了一个字典，存放了各种数据。这些都是从有道的网页后台所爬取的。最后根据你输入的内容即可翻译出相应的结果。</p>
 <p>连载中，还在学习中。。。</p>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
+                </div>
+            </div>
         </div>
         
         
@@ -325,7 +339,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -335,14 +349,14 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        2
                     </p>
                 </div>
             </div>
         </nav>
         
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://xxz666.github.io/about" target="_blank">
                 关注我</a>
         </div>
         
@@ -436,13 +450,28 @@
                 分类
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
 </div>
     
-        
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a>
+    </div>
+</div>
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -485,7 +514,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time></div>
                     <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于python的一些学习</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
                     </p>
                 </div>
             </div>
@@ -574,6 +603,20 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -629,7 +672,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time></div>
                     <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于python的一些学习</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
                     </p>
                 </div>
             </div>
@@ -719,6 +762,20 @@
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -747,7 +804,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 xxz&nbsp;
+                &copy; 2020 xxz&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" 
 target="_blank">Icarus</a>

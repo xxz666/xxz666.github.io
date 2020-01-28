@@ -173,7 +173,7 @@
 
 <p>由于 $|x|$ 本身是不光滑的，但是对于 $\phi(\mu,x)$ 来说，该函数在 $(\mu, x) \in {R_{++}\times R}$  是连续可微的，并且满足对于任给的 $x \in R$ 有 $\lim \limits _{\mu \rightarrow 0} \phi(\mu, x)=|x|$ 成立，从而我们可以利用 $\phi(\mu,x)$ 来把 $|x|$ 光滑化，那么原来的 $|x|$ 是不可求导的变成了可求导 $\phi(\mu,x)$，就会有很多良好的性质。 </p>
 <h2 id="2、关于-x-的第二个光滑函数"><a href="#2、关于-x-的第二个光滑函数" class="headerlink" title="2、关于 $|x|$ 的第二个光滑函数"></a>2、关于 $|x|$ 的第二个光滑函数</h2><p>这种处理办法比较巧妙，我们知道<br>$$\max{x,0}=\frac{|x|+x}{2}$$通过解这个方程我们可以得到<br>$$|x|=2\max{x,0}-x$$对于 $\max{x,0}$ 我们可以选取它的光滑逼近函数$\psi(\mu,x) : R^2 \rightarrow R$<br>$$\psi(\mu, x)=\mu\ln(1+e^{\frac{x}{\mu}})$$对于这个函数的构造很好理解，只要 $\mu$ 足够小以至于 $1+e^{\frac{x}{\mu}}$ 可以近似的等于 $e^{\frac{x}{\mu}}$ 那么 $$\psi(\mu, x)=|x|$$可以利用以下的 <code>matlab</code> 代码去实现该函数 $\psi(\mu,x)$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x=input(&apos;请输入 x=&apos;);</span><br><span class="line">a=0.01; %不能取太小, 否则exp(1/a)会很大，导致MATLAB无法显示</span><br><span class="line">f=a*log(1+exp(x/a));</span><br><span class="line">fprintf(&apos;0 与 %6.4d 的最大者为:%6.4d\n&apos;,x,f);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x=input(&apos;请输入 x=&apos;);</span><br><span class="line">a=0.01; %不能取太小, 否则exp(1/a)会很大，导致MATLAB无法显示</span><br><span class="line">f=a*log(1+exp(x/a));</span><br><span class="line">fprintf(&apos;0 与 %6.4d 的最大者为:%6.4d\n&apos;,x,f);</span><br></pre></td></tr></table></figure>
 <p>做好的最大值的光滑逼近，那么<br>$$|x|=2\max{x,0}-x=2\psi(\mu,x)-x=2\mu\ln(1+e^{\frac{x}{\mu}})-x$$其中 $\mu$ 为一个任意小的正实数。</p>
 <p><strong>通过以上的两种方式可以对 $|x|$ 进行光滑化，对于一些方程的求解是很有帮助的。</strong></p>
 
@@ -317,7 +317,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -327,14 +327,14 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        2
                     </p>
                 </div>
             </div>
         </nav>
         
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+            <a class="level-item button is-link is-rounded" href="https://xxz666.github.io/about" target="_blank">
                 关注我</a>
         </div>
         
@@ -428,13 +428,28 @@
                 分类
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
 </div>
     
-        
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">编程</a>
+    </div>
+</div>
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -477,7 +492,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time></div>
                     <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于python的一些学习</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
                     </p>
                 </div>
             </div>
@@ -566,6 +581,20 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -621,7 +650,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time></div>
                     <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于python的一些学习</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
                     </p>
                 </div>
             </div>
@@ -711,6 +740,20 @@
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -739,7 +782,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 xxz&nbsp;
+                &copy; 2020 xxz&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" 
 target="_blank">Icarus</a>
