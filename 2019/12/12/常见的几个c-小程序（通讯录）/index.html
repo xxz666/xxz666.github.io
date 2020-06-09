@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>常见的几个c++小程序（职工管理系统） - xxzのblog</title>
+
+
+    <meta name="description" content="首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。 职工管理系统的功能简介该程序可以实现增加职工信息（主要有员工、经理、老板三类职工）、显示职工信息、删除职工信息、修改职工信息、查找职工信息、按照员工编号排序、清除职工的所有信息。基本满足了所有的需求。">
+<meta name="keywords" content="编程,小程序,职工管理系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见的几个c++小程序（职工管理系统）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;12&#x2F;%E5%B8%B8%E8%A7%81%E7%9A%84%E5%87%A0%E4%B8%AAc-%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E9%80%9A%E8%AE%AF%E5%BD%95%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="xxzのblog">
+<meta property="og:description" content="首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。 职工管理系统的功能简介该程序可以实现增加职工信息（主要有员工、经理、老板三类职工）、显示职工信息、删除职工信息、修改职工信息、查找职工信息、按照员工编号排序、清除职工的所有信息。基本满足了所有的需求。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2020-03-06T13:38:41.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon1.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="/js/clicklove.js"></script>
+
+
+
+</head>
+
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/22.png" alt="常见的几个c++小程序（职工管理系统）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+
+
+
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-12T00:43:48.000Z">2019-12-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1636 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                常见的几个c++小程序（职工管理系统）
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。</strong></p>
+<h3 id="职工管理系统的功能简介"><a href="#职工管理系统的功能简介" class="headerlink" title="职工管理系统的功能简介"></a>职工管理系统的功能简介</h3><p>该程序可以实现增加职工信息（主要有员工、经理、老板三类职工）、显示职工信息、删除职工信息、修改职工信息、查找职工信息、按照员工编号排序、清除职工的所有信息。基本满足了所有的需求。</p>
+<a id="more"></a>
+
+<h3 id="实现的代码"><a href="#实现的代码" class="headerlink" title="实现的代码"></a>实现的代码</h3><p><code>职工管理系统.cpp</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"workmanager.h"</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	WorkerManager wm;</span><br><span class="line">	<span class="hljs-keyword">int</span> choice=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		wm.Show_Menu();</span><br><span class="line">    	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入要进行的操作："</span>;</span><br><span class="line">		<span class="hljs-built_in">cin</span>&gt;&gt;choice;</span><br><span class="line">		<span class="hljs-keyword">switch</span>(choice)</span><br><span class="line">		&#123;</span><br><span class="line">	    	<span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<span class="hljs-comment">//退出系统</span></span><br><span class="line">				wm.ExitSystem();</span><br><span class="line">    			<span class="hljs-keyword">break</span>;</span><br><span class="line">    		<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<span class="hljs-comment">//添加员工</span></span><br><span class="line">				wm.Add_Emp();</span><br><span class="line">    			<span class="hljs-keyword">break</span>;</span><br><span class="line">    		<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<span class="hljs-comment">//显示员工</span></span><br><span class="line">				wm.Show_Emp();</span><br><span class="line">     			<span class="hljs-keyword">break</span>;</span><br><span class="line">     		<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<span class="hljs-comment">//删除员工</span></span><br><span class="line">				wm.Del_Emp();</span><br><span class="line">    			<span class="hljs-keyword">break</span>;</span><br><span class="line">     		<span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<span class="hljs-comment">//修改员工</span></span><br><span class="line">				wm.Chan_Emp();</span><br><span class="line">     			<span class="hljs-keyword">break</span>;</span><br><span class="line">    		<span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<span class="hljs-comment">//查找员工</span></span><br><span class="line">				wm.Find_Emp();</span><br><span class="line">	    		<span class="hljs-keyword">break</span>;</span><br><span class="line">     		<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<span class="hljs-comment">//排序员工</span></span><br><span class="line">				wm.Sort_Emp();</span><br><span class="line">     			<span class="hljs-keyword">break</span>;</span><br><span class="line">    		<span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<span class="hljs-comment">//清空文件</span></span><br><span class="line">				wm.Clean_Emp();</span><br><span class="line">    			<span class="hljs-keyword">break</span>;</span><br><span class="line">    		<span class="hljs-keyword">default</span>:</span><br><span class="line">	 	    	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">     			<span class="hljs-keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>boss.h</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"work.h"</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Boss</span>:</span> <span class="hljs-keyword">public</span> Worker</span><br><span class="line">&#123;</span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">	Boss(<span class="hljs-keyword">int</span> id,<span class="hljs-built_in">string</span> name,<span class="hljs-keyword">int</span> did);<span class="hljs-comment">//构造函数</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">showInfo</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//显示个人信息</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getDeptName</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">//获取岗位</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<p><code>workmanager.cpp</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"workmanager.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WorkerManager::WorkerManager()<span class="hljs-comment">//构造函数的空实现</span></span><br><span class="line">&#123;</span><br><span class="line">	ifstream ifs;</span><br><span class="line">	ifs.open(FILENAME,ios::in);<span class="hljs-comment">//读文件</span></span><br><span class="line">	<span class="hljs-keyword">if</span>(!ifs.is_open())<span class="hljs-comment">//首先读取文件是否存在</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"系统之前没有添加过任何数据，开始添加吧!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    	<span class="hljs-keyword">this</span>-&gt;m_EmpNum=<span class="hljs-number">0</span>;<span class="hljs-comment">//人数为零</span></span><br><span class="line">    	<span class="hljs-keyword">this</span>-&gt;m_EmpArray=<span class="hljs-literal">NULL</span>;<span class="hljs-comment">//数组为空</span></span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;m_FileEmpty=<span class="hljs-literal">true</span>;</span><br><span class="line">		ifs.close();</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">char</span> ch;</span><br><span class="line">		ifs&gt;&gt;ch;</span><br><span class="line">		<span class="hljs-keyword">if</span>(ifs.eof())<span class="hljs-comment">//eof为读取文件存在，是否为空的函数</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"文件存在，但是是个空文件!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">           	<span class="hljs-keyword">this</span>-&gt;m_EmpNum=<span class="hljs-number">0</span>;<span class="hljs-comment">//人数为零</span></span><br><span class="line">        	<span class="hljs-keyword">this</span>-&gt;m_EmpArray=<span class="hljs-literal">NULL</span>;<span class="hljs-comment">//数组为空</span></span><br><span class="line">	     	<span class="hljs-keyword">this</span>-&gt;m_FileEmpty=<span class="hljs-literal">true</span>;</span><br><span class="line">	      	ifs.close();</span><br><span class="line">	     	<span class="hljs-keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"目前系统内所含职工人数为："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;get_EmpNum()&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_EmpNum=<span class="hljs-keyword">this</span>-&gt;get_EmpNum();</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_EmpArray=<span class="hljs-keyword">new</span> Worker*[<span class="hljs-keyword">this</span>-&gt;m_EmpNum];<span class="hljs-comment">//先开辟新的空间</span></span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;init_Emp();<span class="hljs-comment">//相应的数组内填数据</span></span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_FileEmpty=<span class="hljs-literal">false</span>;<span class="hljs-comment">//文件中有内容，为false</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i &lt; <span class="hljs-keyword">this</span>-&gt;get_EmpNum();i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"员工ID: "</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id</span><br><span class="line">					&lt;&lt;<span class="hljs-string">" 员工姓名: "</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Name</span><br><span class="line">					&lt;&lt;<span class="hljs-string">" 员工职位: "</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;getDeptName()&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Add_Emp()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入添加职工的数量："</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> addNum=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-built_in">cin</span>&gt;&gt;addNum;</span><br><span class="line">	<span class="hljs-keyword">if</span>(addNum&gt;<span class="hljs-number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-comment">//计算添加的空间的大小</span></span><br><span class="line">		<span class="hljs-keyword">int</span> newSize=<span class="hljs-keyword">this</span>-&gt;m_EmpNum+addNum;</span><br><span class="line">		Worker ** newSpace=<span class="hljs-keyword">new</span> Worker*[newSize];<span class="hljs-comment">//开辟新空间</span></span><br><span class="line">        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//先将原来的数据拷贝过来</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				newSpace[i]=<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;addNum;i++)<span class="hljs-comment">//添加新数据</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> id;</span><br><span class="line">			<span class="hljs-built_in">string</span> name;</span><br><span class="line">			<span class="hljs-keyword">int</span> did;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入第 "</span>&lt;&lt;i+<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-string">" 个新职工的编号："</span>;</span><br><span class="line">			<span class="hljs-built_in">cin</span>&gt;&gt;id;</span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m_EmpNum;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-keyword">if</span>(id==<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"抱歉，该ID："</span>&lt;&lt;id&lt;&lt;<span class="hljs-string">" 已经有员工使用,请重新输入!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">					<span class="hljs-keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入第 "</span>&lt;&lt;i+<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-string">" 个新职工的姓名："</span>;</span><br><span class="line">			<span class="hljs-built_in">cin</span>&gt;&gt;name;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入第 "</span>&lt;&lt;i+<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-string">" 个新职工的岗位："</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"1.普通职工"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"2.经理"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"3.老板"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cin</span>&gt;&gt;did;</span><br><span class="line">			Worker *worker=<span class="hljs-literal">NULL</span>;</span><br><span class="line">			<span class="hljs-keyword">switch</span> (did)</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:</span><br><span class="line">				worker=<span class="hljs-keyword">new</span> Employee(id,name,<span class="hljs-number">1</span>);<span class="hljs-comment">//构造函数初始化</span></span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:</span><br><span class="line">				worker=<span class="hljs-keyword">new</span> Manager(id,name,<span class="hljs-number">2</span>);</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:</span><br><span class="line">				worker=<span class="hljs-keyword">new</span> Boss(id,name,<span class="hljs-number">3</span>);</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			<span class="hljs-keyword">default</span>:</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			newSpace [<span class="hljs-keyword">this</span>-&gt;m_EmpNum+i]=worker;<span class="hljs-comment">//新加的数据保存到数组中</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-comment">//释放空间</span></span><br><span class="line">        <span class="hljs-keyword">delete</span>[] <span class="hljs-keyword">this</span>-&gt;m_EmpArray;</span><br><span class="line">		<span class="hljs-comment">//更改空间指向</span></span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;m_EmpArray=newSpace;</span><br><span class="line">		<span class="hljs-comment">//更新职工人数</span></span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;m_EmpNum=newSize;<span class="hljs-comment">//即 原有+新增</span></span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;m_FileEmpty=<span class="hljs-literal">false</span>;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"成功添加了 "</span>&lt;&lt;addNum&lt;&lt;<span class="hljs-string">" 名职工!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;save();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(addNum&lt;=<span class="hljs-number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"你的添加有误，请输入大于零的整数"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::save()</span><br><span class="line">&#123;</span><br><span class="line">	ofstream ofs;</span><br><span class="line">	ofs.open(FILENAME,ios::out);<span class="hljs-comment">//以写文件的格式打开</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ofs&lt;&lt;<span class="hljs-string">"ID: "</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id&lt;&lt;<span class="hljs-string">"  "</span></span><br><span class="line">		   &lt;&lt;<span class="hljs-string">"姓名: "</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Name&lt;&lt;<span class="hljs-string">"  "</span></span><br><span class="line">		   &lt;&lt;<span class="hljs-string">"职位: "</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;getDeptName()&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	ofs.close();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Show_Menu()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"+++++++++++++++++++++++++++++++++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"+++++++=  欢迎使用职工管理系统  =++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  0 退出管理系统  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  1 增加职工信息  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  2 显示职工信息  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  3 删除职工信息  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  4 修改职工信息  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  5 查找职工信息  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  6 按照编号排序  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"++++++++++=  7 清空所有文档  =+++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"+++++++++++++++++++++++++++++++++++++++++"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-built_in">endl</span>;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::ExitSystem()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"谢谢您的使用，欢迎下次再使用该系统"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	<span class="hljs-built_in">exit</span> (<span class="hljs-number">0</span>);<span class="hljs-comment">//退出程序的命令，无论再执行哪个步骤，都会退出</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> WorkerManager::get_EmpNum()<span class="hljs-comment">//统计文件中所含数据的个数</span></span><br><span class="line">&#123;</span><br><span class="line">	ifstream ifs;</span><br><span class="line">	ifs.open(FILENAME,ios::in);</span><br><span class="line">	<span class="hljs-keyword">int</span> id;</span><br><span class="line">	<span class="hljs-built_in">string</span> name;</span><br><span class="line">	<span class="hljs-built_in">string</span> did;</span><br><span class="line">	<span class="hljs-built_in">string</span> w1;</span><br><span class="line">	<span class="hljs-built_in">string</span> w2;</span><br><span class="line">	<span class="hljs-built_in">string</span> w3;</span><br><span class="line">	<span class="hljs-keyword">int</span> num=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">while</span>( ifs&gt;&gt;w1 &amp;&amp; ifs&gt;&gt;id &amp;&amp; ifs&gt;&gt;w2 &amp;&amp; ifs&gt;&gt;name &amp;&amp; ifs&gt;&gt;w3&amp;&amp; ifs&gt;&gt;did)</span><br><span class="line">	&#123;</span><br><span class="line">		num++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::init_Emp()</span><br><span class="line">&#123;</span><br><span class="line">	ifstream ifs;</span><br><span class="line">	ifs.open(FILENAME,ios::in);</span><br><span class="line">	<span class="hljs-keyword">int</span> id;</span><br><span class="line">	<span class="hljs-built_in">string</span> name;</span><br><span class="line">	<span class="hljs-built_in">string</span> did;</span><br><span class="line">	<span class="hljs-built_in">string</span> w1;</span><br><span class="line">	<span class="hljs-built_in">string</span> w2;</span><br><span class="line">	<span class="hljs-built_in">string</span> w3;</span><br><span class="line">	<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">while</span>( ifs&gt;&gt;w1 &amp;&amp; ifs&gt;&gt;id &amp;&amp; ifs&gt;&gt;w2 &amp;&amp; ifs&gt;&gt;name &amp;&amp; ifs&gt;&gt;w3&amp;&amp; ifs&gt;&gt;did)</span><br><span class="line">	&#123;</span><br><span class="line">		Worker *worker=<span class="hljs-literal">NULL</span>;</span><br><span class="line">		<span class="hljs-keyword">if</span>(did==<span class="hljs-string">"普通员工"</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> did1=<span class="hljs-number">1</span>;</span><br><span class="line">			worker=<span class="hljs-keyword">new</span> Employee(id,name,did1);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(did==<span class="hljs-string">"公司老板"</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> did3=<span class="hljs-number">3</span>;</span><br><span class="line">			worker=<span class="hljs-keyword">new</span> Boss(id,name,did3);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(did==<span class="hljs-string">"公司经理"</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> did2=<span class="hljs-number">2</span>;</span><br><span class="line">			worker=<span class="hljs-keyword">new</span> Manager(id,name,did2);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;m_EmpArray[index]=worker;</span><br><span class="line">		index++;</span><br><span class="line">	&#125;</span><br><span class="line">	ifs.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Show_Emp()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_FileEmpty)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"文件不存在或无员工存入!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m_EmpNum;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;showInfo();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Del_Emp()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_FileEmpty)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"文件内容为空，没有可删除的数据。"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	    system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">    	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入你要删除的员工的编号："</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> id;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;id;</span><br><span class="line">		<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>;<span class="hljs-comment">//测试</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">		&#123;</span><br><span class="line">         	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id!=id)</span><br><span class="line">			&#123;</span><br><span class="line">				index=<span class="hljs-number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				index=<span class="hljs-number">1</span>;</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(index==<span class="hljs-number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">		   	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"编号为: "</span>&lt;&lt;id&lt;&lt;<span class="hljs-string">" 的员工已删除"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;j++)</span><br><span class="line">			&#123;</span><br><span class="line">                <span class="hljs-keyword">this</span>-&gt;m_EmpArray[j]=<span class="hljs-keyword">this</span>-&gt;m_EmpArray[j+<span class="hljs-number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">            <span class="hljs-keyword">this</span>-&gt;m_EmpNum=<span class="hljs-keyword">this</span>-&gt;m_EmpNum<span class="hljs-number">-1</span>;</span><br><span class="line">	      	<span class="hljs-keyword">this</span>-&gt;save();<span class="hljs-comment">//删除数据后，文件更新</span></span><br><span class="line">          	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">          	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index==<span class="hljs-number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"没有查到ID为："</span>&lt;&lt;id&lt;&lt;<span class="hljs-string">" 的员工"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">			system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Chan_Emp()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_FileEmpty)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"文件内容为空，没有可修改的数据。"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	    system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">    	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入你要修改的员工的编号："</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> id;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;id;</span><br><span class="line">		<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>;<span class="hljs-comment">//测试</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">		&#123;</span><br><span class="line">         	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id!=id)</span><br><span class="line">			&#123;</span><br><span class="line">				index=<span class="hljs-number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				index=<span class="hljs-number">1</span>;</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(index==<span class="hljs-number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">string</span> name;</span><br><span class="line">			<span class="hljs-keyword">int</span> did;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入该职工的编号："</span>;</span><br><span class="line">			<span class="hljs-built_in">cin</span>&gt;&gt;id;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入该职工的姓名："</span>;</span><br><span class="line">			<span class="hljs-built_in">cin</span>&gt;&gt;name;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入该职工的岗位："</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"1.普通职工"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"2.经理"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"3.老板"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			<span class="hljs-built_in">cin</span>&gt;&gt;did;</span><br><span class="line">			Worker *worker=<span class="hljs-literal">NULL</span>;</span><br><span class="line">			<span class="hljs-keyword">switch</span> (did)</span><br><span class="line">			&#123;</span><br><span class="line">			<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:</span><br><span class="line">				worker=<span class="hljs-keyword">new</span> Employee(id,name,<span class="hljs-number">1</span>);<span class="hljs-comment">//构造函数初始化</span></span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:</span><br><span class="line">				worker=<span class="hljs-keyword">new</span> Manager(id,name,<span class="hljs-number">2</span>);</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:</span><br><span class="line">				worker=<span class="hljs-keyword">new</span> Boss(id,name,<span class="hljs-number">3</span>);</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			<span class="hljs-keyword">default</span>:</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]=worker;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"修改成功"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	      	<span class="hljs-keyword">this</span>-&gt;save();<span class="hljs-comment">//修改数据后，文件更新</span></span><br><span class="line">          	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">          	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index==<span class="hljs-number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"没有查到ID为："</span>&lt;&lt;id&lt;&lt;<span class="hljs-string">" 的员工"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">			system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Find_Emp()<span class="hljs-comment">//只能按照ID查找，可改为按照姓名或ID查找</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_FileEmpty)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"文件内容为空，没有可查找的数据。"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	    system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">    	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"请输入你要查找的员工的编号："</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> id;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;id;</span><br><span class="line">		<span class="hljs-keyword">int</span> index=<span class="hljs-number">0</span>;<span class="hljs-comment">//测试</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">		&#123;</span><br><span class="line">         	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id!=id)</span><br><span class="line">			&#123;</span><br><span class="line">				index=<span class="hljs-number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				index=<span class="hljs-number">1</span>;</span><br><span class="line">				<span class="hljs-keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(index==<span class="hljs-number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"员工ID："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id</span><br><span class="line">				&lt;&lt;<span class="hljs-string">"  员工姓名："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Name</span><br><span class="line">				&lt;&lt;<span class="hljs-string">"  员工职位："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;getDeptName()&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">          	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">          	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index==<span class="hljs-number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"没有查到ID为："</span>&lt;&lt;id&lt;&lt;<span class="hljs-string">" 的员工"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">			system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Sort_Emp()<span class="hljs-comment">//只能按从小到大，可改为用户自主选择排序方式</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_FileEmpty)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"文件内容为空，没有可排序的数据。"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">		system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	    system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]-&gt;m_Id&gt;<span class="hljs-keyword">this</span>-&gt;m_EmpArray[j]-&gt;m_Id)</span><br><span class="line">				&#123;</span><br><span class="line">					Worker *worker=<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i];</span><br><span class="line">					<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]=<span class="hljs-keyword">this</span>-&gt;m_EmpArray[j];</span><br><span class="line">					<span class="hljs-keyword">this</span>-&gt;m_EmpArray[j]=worker;</span><br><span class="line">				&#125;</span><br><span class="line">					</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"排序成功"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	   	<span class="hljs-keyword">this</span>-&gt;save();<span class="hljs-comment">//修改数据后，文件更新</span></span><br><span class="line">       	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">       	system(<span class="hljs-string">"cls"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> WorkerManager::Clean_Emp()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"你真的确认清空数据吗？"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"1.确认"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"2.返回"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> select=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-built_in">cin</span>&gt;&gt;select;</span><br><span class="line">	<span class="hljs-keyword">if</span>(select==<span class="hljs-number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-function">ofstream <span class="hljs-title">ofs</span><span class="hljs-params">(FILENAME,ios::trunc)</span></span>;<span class="hljs-comment">//如果文件存在删除文件并重新创建</span></span><br><span class="line">		ofs.close();</span><br><span class="line">		<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-comment">//删除对象</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>-&gt;m_EmpArray[i];</span><br><span class="line">				<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]=<span class="hljs-literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">delete</span>[] <span class="hljs-keyword">this</span>-&gt;m_EmpArray;</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_EmpArray=<span class="hljs-literal">NULL</span>;</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_EmpNum=<span class="hljs-number">0</span>;</span><br><span class="line">			<span class="hljs-keyword">this</span>-&gt;m_FileEmpty=<span class="hljs-literal">true</span>;</span><br><span class="line">			<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"内容已全部删除!"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">			system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">			system(<span class="hljs-string">"cls"</span>);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(select==<span class="hljs-number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">		system(<span class="hljs-string">"cls"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WorkerManager::~WorkerManager()<span class="hljs-comment">//析构函数的空实现</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>-&gt;m_EmpNum;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt;m_EmpArray[i]!=<span class="hljs-literal">NULL</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>-&gt;m_EmpArray[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">delete</span>[] <span class="hljs-keyword">this</span>-&gt;m_EmpArray;</span><br><span class="line">		<span class="hljs-keyword">this</span>-&gt;m_EmpArray=<span class="hljs-literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>manager.cpp</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"manager.h"</span></span></span><br><span class="line"></span><br><span class="line">Manager::Manager(<span class="hljs-keyword">int</span> id,<span class="hljs-built_in">string</span> name,<span class="hljs-keyword">int</span> did)<span class="hljs-comment">//构造函数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_Id=id;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_Name=name;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_DeptId=did;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">void</span> Manager::showInfo()<span class="hljs-comment">//显示个人信息</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"职工编号："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_Id</span><br><span class="line">		&lt;&lt;<span class="hljs-string">"\t职工姓名："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_Name</span><br><span class="line">		&lt;&lt;<span class="hljs-string">"\t职工部门："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;getDeptName()</span><br><span class="line">	    &lt;&lt;<span class="hljs-string">"\t岗位职责：完成老板交给的任务并给员工部署任务"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">string</span> Manager::getDeptName()<span class="hljs-comment">//获取岗位</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-string">"公司经理"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>employee.cpp</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"employee.h"</span></span></span><br><span class="line"></span><br><span class="line">Employee::Employee(<span class="hljs-keyword">int</span> id,<span class="hljs-built_in">string</span> name,<span class="hljs-keyword">int</span> did)<span class="hljs-comment">//构造函数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_Id=id;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_Name=name;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_DeptId=did;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">void</span> Employee::showInfo()<span class="hljs-comment">//显示个人信息</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"职工编号："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_Id</span><br><span class="line">		&lt;&lt;<span class="hljs-string">"\t职工姓名："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_Name</span><br><span class="line">		&lt;&lt;<span class="hljs-string">"\t职工部门："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;getDeptName()</span><br><span class="line">	    &lt;&lt;<span class="hljs-string">"\t岗位职责：完成经理交给的任务"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">string</span> Employee::getDeptName()<span class="hljs-comment">//获取岗位</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-string">"普通员工"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>boss.cpp</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"boss.h"</span></span></span><br><span class="line"></span><br><span class="line">Boss::Boss(<span class="hljs-keyword">int</span> id,<span class="hljs-built_in">string</span> name,<span class="hljs-keyword">int</span> did)<span class="hljs-comment">//构造函数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_Id=id;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_Name=name;</span><br><span class="line">	<span class="hljs-keyword">this</span>-&gt;m_DeptId=did;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">void</span> Boss::showInfo()<span class="hljs-comment">//显示个人信息</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"职工编号："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_Id</span><br><span class="line">		&lt;&lt;<span class="hljs-string">"\t职工姓名："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;m_Name</span><br><span class="line">		&lt;&lt;<span class="hljs-string">"\t职工部门："</span>&lt;&lt;<span class="hljs-keyword">this</span>-&gt;getDeptName()</span><br><span class="line">	    &lt;&lt;<span class="hljs-string">"\t岗位职责：给经理部署任务"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">string</span> Boss::getDeptName()<span class="hljs-comment">//获取岗位</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-string">"公司老板"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>, <a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>, <a class="has-link-grey -link" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" rel="tag">职工管理系统</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://i.loli.net/2020/01/29/oljdxeKzm2Yc4gt.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://i.loli.net/2020/01/29/ONBQiEp2S9fvhrX.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/12/22/%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">时间变化凸优化程序</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/03/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98c-%E6%95%99%E7%A8%8B%EF%BC%88%E6%80%BB%E7%BB%93%E6%9A%91%E5%81%87%E7%9A%84%E5%BF%83%E5%BE%97%EF%BC%89/">
+                <span class="level-item">黑马程序员c++教程（总结暑假的心得）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://i.loli.net/2019/10/28/7FzcBCG5jUganVS.jpg" alt="xxz">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        xxz
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        无限成长，无限进步
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Tian Jin</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        25
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://xxz666.github.io/about" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-creative-commons"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-weixin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="微博" href="https://mp.weixin.qq.com/">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#职工管理系统的功能简介">
+        <span class="has-mr-6">1</span>
+        <span>职工管理系统的功能简介</span>
+        </a></li><li>
+        <a class="is-flex" href="#实现的代码">
+        <span class="has-mr-6">2</span>
+        <span>实现的代码</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/c/">
+            <span class="level-start">
+                <span class="level-item">c++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/python/">
+            <span class="level-start">
+                <span class="level-item">python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
+            <span class="level-start">
+                <span class="level-item">张量互补问题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">
+            <span class="level-start">
+                <span class="level-item">时间变化凸优化</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/c/" style="font-size: 18px;">c++</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 14px;">小程序</a> <a href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/" style="font-size: 10px;">张量互补问题</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 16px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px;">数据结构</a> <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" style="font-size: 16px;">最优化算法</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 12px;">线性表</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">职工管理系统</a> <a href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/" style="font-size: 12px;">边缘碰撞</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记10">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time></div>
+                    <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记10</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记7-9">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time></div>
+                    <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记7-9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记4-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记4-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="欧拉法求解时间变换凸优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T11:49:13.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">欧拉法求解时间变换凸优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">时间变化凸优化</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
+                        <span class="tag">张量互补问题</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="tag">排序算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
+                        <span class="tag">最优化算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="tag">线性表</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="tag">职工管理系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/">
+                        <span class="tag">边缘碰撞</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记10">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time></div>
+                    <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记10</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记7-9">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time></div>
+                    <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记7-9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记4-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记4-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="欧拉法求解时间变换凸优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T11:49:13.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">欧拉法求解时间变换凸优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">时间变化凸优化</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
+                        <span class="tag">张量互补问题</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="tag">排序算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
+                        <span class="tag">最优化算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="tag">线性表</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="tag">职工管理系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/">
+                        <span class="tag">边缘碰撞</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            
+
+
+           </div>
+        </div>
+
+
+
+
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/22.png" alt="常见的几个c++小程序（职工管理系统）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 xxz&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" 
+target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+<!-- ѩ����Ч -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+
+
+

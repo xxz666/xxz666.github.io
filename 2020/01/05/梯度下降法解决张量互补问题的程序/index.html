@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>梯度下降法解决张量互补问题 - xxzのblog</title>
+
+
+    <meta name="description" content="首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。 前几天，同学再看一篇梯度下降法求解张量互补问题时，发现结构张量的条件可以降低，他想把这篇文章写出来，在用 Matlab 做算法的程序时遇到了困难，我帮他把程序编完了。该文章的主要思路如下（注：在第一篇文章会一直更新关于张量互补问题的基本内容，所以关于张量互补问题在这篇文章就不介绍了）：那篇论文提出的是张量互补问题与一个张">
+<meta name="keywords" content="编程,算法,数学,最优化算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="梯度下降法解决张量互补问题">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;05&#x2F;%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E8%A7%A3%E5%86%B3%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98%E7%9A%84%E7%A8%8B%E5%BA%8F&#x2F;index.html">
+<meta property="og:site_name" content="xxzのblog">
+<meta property="og:description" content="首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。 前几天，同学再看一篇梯度下降法求解张量互补问题时，发现结构张量的条件可以降低，他想把这篇文章写出来，在用 Matlab 做算法的程序时遇到了困难，我帮他把程序编完了。该文章的主要思路如下（注：在第一篇文章会一直更新关于张量互补问题的基本内容，所以关于张量互补问题在这篇文章就不介绍了）：那篇论文提出的是张量互补问题与一个张">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2020-03-07T11:51:26.006Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon1.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="/js/clicklove.js"></script>
+
+
+
+</head>
+
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/22.png" alt="梯度下降法解决张量互补问题" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+
+
+
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-05T13:16:33.000Z">2020-01-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">张量互补问题</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 963 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                梯度下降法解决张量互补问题
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。</strong></p>
+<p>前几天，同学再看一篇梯度下降法求解张量互补问题时，发现结构张量的条件可以降低，他想把这篇文章写出来，在用 Matlab 做算法的程序时遇到了困难，我帮他把程序编完了。该文章的主要思路如下（注：在第一篇文章会一直更新关于张量互补问题的基本内容，所以关于张量互补问题在这篇文章就不介绍了）：<br>那篇论文提出的是张量互补问题与一个张量方程组是等价的，也就是下边的内容：</p>
+<a id="more"></a>
+
+<p>已知张量互补问题是：<br>$$x \geq 0,\mathscr{A} x^{m-1}+q \geq 0,\text { and } x^{\top}( \mathscr{A}x^{m-1}+q)= 0$$这个式子等价于$$<br>H(x, y)=\left[\begin{array}{c}<br>x \circ y \<br>y-\mathscr{A} x^{m-1}-q<br>\end{array}\right]=0<br>$$其中 $x\geq0$, $y\geq0$.<br>从而转化成求解上面方程组的形式，所选取的张量为强 p 张量，算法流程为：<br>Step 0 令 $s&gt;0$, $\epsilon&gt;0$ $\alpha \in (0,1)$ $\beta \in [0,1)$, $\sigma &gt;0$. 选取 $z^0=(x^0,y^0) \in R_{++}$, $\beta_0 \in [0, \beta)$ k=0.<br>Step 1 $z=z^k$, 通过求解$$<br>\left[\begin{array}{cc}<br>D_{y} &amp; D_{x} \<br>-(m-1) \mathcal{A} x^{m-2} &amp; I<br>\end{array}\right]\left[\begin{array}{l}<br>\Delta x \<br>\Delta y<br>\end{array}\right]=\left[\begin{array}{c}<br>-D_{x} y+\beta \frac{x^{\top} y}{m} e \<br>-y+\mathcal{A} x^{m-1}+q<br>\end{array}\right]<br>$$求出方向 $d^k$<br>Step 2 令 $l_k$ 为最小的非负整数，并且通过求解$$<br>\begin{aligned}<br>z^{k}+\sigma \rho^{l} d^{k} &amp; \in \Omega_{++} \<br>\varphi\left(z^{k}+\sigma \rho^{l} d^{k}\right)-\varphi\left(z^{k}\right) &amp; \leq-\alpha \sigma \rho^{l}\left(1-\beta_{k}\right) s<br>\end{aligned}<br>$$得出步长 $z^{k+1}=z^{k}+\sigma \rho^{k^{k}} d^{k}$.<br>Step 3 若 $z^{k+1}$ 满足$f\left(z^{k+1}\right)=\left(x^{k+1}\right)^{\top} y^{k+1}+\left|y^{k+1}-\mathcal{A}\left(x^{k+1}\right)^{m-1}-q\right|^{2}&lt;\varepsilon$， 则 $z^{k+1}$ 为张量互补问题的解，如果不满足，那么跳转到 Step 1 ，继续求方向和步长.</p>
+<p>算法的程序：<br><code>Initialization.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">rand('state',0); %&lt;-- Setup for the script</span><br><span class="line">subs = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>]; %&lt;-- Subscripts of the nonzeros.</span><br><span class="line">vals = [<span class="hljs-number">1</span>;<span class="hljs-number">-2</span>;<span class="hljs-number">1</span>]; %&lt;-- The values of the nonzeros.</span><br><span class="line"></span><br><span class="line">%  subs = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>;</span><br><span class="line">%      <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>;<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>;</span><br><span class="line">%      <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>;<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>;</span><br><span class="line">%      <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>;]; %&lt;-- Subscripts of the nonzeros.</span><br><span class="line">%  vals = [<span class="hljs-number">256.0002</span>;<span class="hljs-number">0.006</span>;<span class="hljs-number">0.006</span>;<span class="hljs-number">0.18</span>;<span class="hljs-number">0.006</span>;<span class="hljs-number">0.18</span>;<span class="hljs-number">0.18</span>;<span class="hljs-number">5.4</span>;<span class="hljs-number">0.006</span>;<span class="hljs-number">0.18</span>;<span class="hljs-number">0.18</span>;<span class="hljs-number">5.4</span>;<span class="hljs-number">0.18</span>;<span class="hljs-number">5.4</span>;<span class="hljs-number">5.4</span>;<span class="hljs-number">162</span>];</span><br><span class="line"> %vals = [<span class="hljs-number">2403</span>;<span class="hljs-number">10</span>;<span class="hljs-number">10</span>;<span class="hljs-number">50</span>;<span class="hljs-number">10</span>;<span class="hljs-number">50</span>;<span class="hljs-number">50</span>;<span class="hljs-number">250</span>;<span class="hljs-number">10</span>;<span class="hljs-number">50</span>;<span class="hljs-number">50</span>;<span class="hljs-number">250</span>;<span class="hljs-number">50</span>;<span class="hljs-number">250</span>;<span class="hljs-number">250</span>;<span class="hljs-number">1250</span>];</span><br><span class="line">  A= sptensor(subs,vals); %&lt;----张量初始化</span><br><span class="line">  </span><br><span class="line">% A(:,:,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)=[<span class="hljs-number">2403</span> <span class="hljs-number">10</span>;<span class="hljs-number">10</span> <span class="hljs-number">50</span>];</span><br><span class="line">% A(:,:,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)=[<span class="hljs-number">10</span> <span class="hljs-number">50</span>;<span class="hljs-number">50</span> <span class="hljs-number">250</span>];</span><br><span class="line">% A(:,:,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)=[<span class="hljs-number">10</span> <span class="hljs-number">50</span>;<span class="hljs-number">50</span> <span class="hljs-number">250</span>];</span><br><span class="line">% A(:,:,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)=[<span class="hljs-number">50</span> <span class="hljs-number">250</span>;<span class="hljs-number">250</span> <span class="hljs-number">1250</span>];</span><br><span class="line">% A=tensor(A);</span><br><span class="line"></span><br><span class="line">% 一些初始元素</span><br><span class="line">m=<span class="hljs-number">4</span>;</span><br><span class="line">n=size(A,<span class="hljs-number">1</span>); %A的第一阶的维数</span><br><span class="line">%q=randn([n,<span class="hljs-number">1</span>]);</span><br><span class="line">q=[<span class="hljs-number">0</span>; <span class="hljs-number">0</span>];</span><br><span class="line">s=<span class="hljs-number">1</span>;</span><br><span class="line">aref=<span class="hljs-number">0.6</span>;    %表示 α</span><br><span class="line">rou=<span class="hljs-number">0.4</span>;     %表示 ρ</span><br><span class="line">Seita=<span class="hljs-number">0.8</span>;   %表示 σ</span><br><span class="line">beta=<span class="hljs-number">0.5</span>;    %表示 β</span><br><span class="line">ybsl=<span class="hljs-number">1.0e-8</span>; %表示 ε</span><br><span class="line"></span><br><span class="line">% ************* x_0 与 y_0 的初始化**************</span><br><span class="line">% x_0=[<span class="hljs-number">0.8147</span>;<span class="hljs-number">0.9058</span>];</span><br><span class="line">% y_0=[<span class="hljs-number">0.1270</span>;<span class="hljs-number">0.9137</span>];</span><br><span class="line">% x_0=randn([n,<span class="hljs-number">1</span>]);</span><br><span class="line">% y_0=randn([n,<span class="hljs-number">1</span>]);</span><br><span class="line">%  x_0=[<span class="hljs-number">0.9572</span>;<span class="hljs-number">0.4854</span>];</span><br><span class="line">%  y_0=[<span class="hljs-number">0.8003</span>;<span class="hljs-number">0.1419</span>];</span><br><span class="line"> x_0=[<span class="hljs-number">95</span>;<span class="hljs-number">48</span>];</span><br><span class="line"> y_0=[<span class="hljs-number">80</span>;<span class="hljs-number">14</span>];</span><br><span class="line"></span><br><span class="line">z_0=[x_0;y_0];</span><br><span class="line">HH=f(z_0,A,q,n);</span><br><span class="line">norm_0=x_0'*y_0+(norm(HH))^<span class="hljs-number">2</span>;</span><br><span class="line"></span><br><span class="line">k=<span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">z_k=z_0;</span><br><span class="line">y_k=y_0;</span><br><span class="line">x_k=x_0;</span><br><span class="line">norm_k=norm_0;</span><br><span class="line"></span><br><span class="line">smoothing %&lt;----接下一个文件</span><br></pre></td></tr></table></figure>
+<p><code>smoothing.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">fprintf('当张量为4阶2维时：\n');</span><br><span class="line">fprintf('当初始向量x_0=(%6.4f , %6.4f),迭代过程为：\n',x_0);  %&lt;-----一些初始化的说明</span><br><span class="line">fprintf('当方程中初始的 q=(%6.4f , %6.4f),迭代过程为：\n',q);</span><br><span class="line"></span><br><span class="line">fprintf('   k     norm(H(z_k))     x_k       y_k\n');</span><br><span class="line">tstart = tic;  % 计时器，表示计时开始</span><br><span class="line">% z_k 满足以下条件继续迭代</span><br><span class="line"><span class="hljs-keyword">while</span> (norm_k &gt; ybsl ) % 终止条件的验证    </span><br><span class="line">    if rcond(dH(z_k,A,m,n))&gt;1.0e-10; % 确认雅克比矩阵的可逆性    </span><br><span class="line">    dz_k=dH(z_k,A,m,n)\direct_right(z_k,A,n,beta,q);     </span><br><span class="line">    alpha_k=Seita*Alpha(z_k,Seita,dz_k,s,A,q,beta,n,rou,aref,ybsl); %运行Alpha文件中的函数</span><br><span class="line">    </span><br><span class="line">%     <span class="hljs-keyword">if</span> (z_k+alpha_k*dz_k-z_k&lt;ybsl*ones(n+n,<span class="hljs-number">1</span>))  % 这个终止条件几乎没用到</span><br><span class="line">%         <span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>:n</span><br><span class="line">%             <span class="hljs-keyword">if</span>(<span class="hljs-built_in">log</span>(z_k(i)+alpha_k*dz_k(i))==-<span class="hljs-built_in">log</span>(z_k(n+i)+alpha_k*dz_k(n+i)))</span><br><span class="line">%                 z_k = z_k + alpha_k.* dz_k;</span><br><span class="line">%                 y_k=z_k(n+<span class="hljs-number">1</span>:n+n);</span><br><span class="line">%                 x_k=z_k(<span class="hljs-number">1</span>:n);</span><br><span class="line">%                 k=k+<span class="hljs-number">1</span>;</span><br><span class="line">%                 HH=f(z_k,A,q,n);</span><br><span class="line">%                 norm_k=x_k'*y_k+(norm(HH))^<span class="hljs-number">2</span>;</span><br><span class="line">%                 <span class="hljs-keyword">break</span></span><br><span class="line">%             end</span><br><span class="line">%         end</span><br><span class="line">%     end        </span><br><span class="line">    z_k = z_k + alpha_k.* dz_k;</span><br><span class="line">    y_k=z_k(n+<span class="hljs-number">1</span>:n+n);</span><br><span class="line">    x_k=z_k(<span class="hljs-number">1</span>:n);</span><br><span class="line">    k=k+<span class="hljs-number">1</span>;</span><br><span class="line">    HH=f(z_k,A,q,n);</span><br><span class="line">    norm_k=x_k'*y_k+(norm(HH))^<span class="hljs-number">2</span>;    </span><br><span class="line">     fprintf('%4d    %10.2d       (%6.4f , %6.4f)   (%6.4f , %6.4f)\n',k, norm_k,x_k, y_k);%  %10.2d 数的宽度为10，小数点后2位</span><br><span class="line">    end;</span><br><span class="line">end</span><br><span class="line">telapsed = toc(tstart); %表示终止计时器</span><br><span class="line"></span><br><span class="line">% ************一些最后输出的量************************</span><br><span class="line">fprintf('经过 %d 次迭代满足条件,最后各项输出结果为：\n',k);  </span><br><span class="line">fprintf('   k          x_0                 z_k                             Times    norm(H(z_k)) \n');</span><br><span class="line">fprintf('%4d    (%6.4f , %6.4f)  (%6.4f , %6.4f , %6.4f , %6.4f)     %6.4f     %6.2d   \n',k,x_0,z_k,telapsed,norm_k);</span><br><span class="line"><span class="hljs-built_in">fprintf</span>(<span class="hljs-string">'\n'</span>);</span><br><span class="line">%  elseif (z_k+Seita*(rou^check)*dz_k-z_k&lt;ybsl*ones(n+n,<span class="hljs-number">1</span>))</span><br><span class="line">%         <span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span>:n</span><br><span class="line">%             <span class="hljs-keyword">if</span>(<span class="hljs-built_in">log</span>(z_k(i)+Seita*(rou^check)*dz_k(i))==-<span class="hljs-built_in">log</span>(z_k(n+i)+Seita*(rou^check)*dz_k(n+i)))</span><br><span class="line">%                 val = rou^check;</span><br><span class="line">%                 <span class="hljs-keyword">return</span>; </span><br><span class="line">%             <span class="hljs-keyword">else</span></span><br><span class="line">%                 check=check+<span class="hljs-number">1</span>;</span><br><span class="line">%             end</span><br><span class="line">%         end</span><br></pre></td></tr></table></figure>
+<p><code>fai.m</code></p>
+<figure class="highlight c hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function val=fai(z_k,A,n,s,q)</span><br><span class="line"></span><br><span class="line">%fai 此函数为 φ</span><br><span class="line">x_k=z_k(<span class="hljs-number">1</span>:n); %x_k 为 z_k 的前n行</span><br><span class="line">y_k=z_k(n+<span class="hljs-number">1</span>:n+n); %y_k 为 z_k的第n+<span class="hljs-number">1</span>到第n+n行</span><br><span class="line">dd=ttv(A,&#123;x_k,x_k,x_k&#125;,[<span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]); </span><br><span class="line">y1=<span class="hljs-keyword">double</span>(dd); %转化为小数格式</span><br><span class="line">fai=(n+s)*<span class="hljs-built_in">log</span>(x_k'*y_k+(norm(y_k-y1-q))^<span class="hljs-number">2</span>)-sum(<span class="hljs-built_in">log</span>(x_k))-sum(<span class="hljs-built_in">log</span>(y_k));</span><br><span class="line">val=fai;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><code>H.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function val =H(z_k,A,q,n)</span><br><span class="line"></span><br><span class="line">%为 H 函数的构造 </span><br><span class="line">x_k=z_k(<span class="hljs-number">1</span>:n);%x_k 为 z_k 的前n行</span><br><span class="line">y_k=z_k(n+<span class="hljs-number">1</span>:n+n); %y_k 为 z_k 的第n+<span class="hljs-number">1</span>行到第<span class="hljs-number">2</span>n行</span><br><span class="line">x1=diag(x_k)*y_k;</span><br><span class="line">dd=ttv(A,&#123;x_k,x_k,x_k&#125;,[<span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]); </span><br><span class="line">y1=<span class="hljs-keyword">double</span>(dd); %转化为小数格式</span><br><span class="line">H=[x1;y_k-y1-q];</span><br><span class="line">val=H;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><code>direct_right.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function val=direct_right(z_k,A,n,beta,q)</span><br><span class="line"></span><br><span class="line">% step2 中求方向的等式的右边的函数</span><br><span class="line">x_k=z_k(<span class="hljs-number">1</span>:n); %x_k 为 z_k 的前n行</span><br><span class="line">y_k=z_k(n+<span class="hljs-number">1</span>:n+n); %y_k 为 z_k的第n+<span class="hljs-number">1</span>到第n+n行</span><br><span class="line">dd=ttv(A,&#123;x_k,x_k,x_k&#125;,[<span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]); </span><br><span class="line">y1=<span class="hljs-keyword">double</span>(dd); %转化为小数格式</span><br><span class="line">direct_right=[-diag(x_k)*y_k+beta*((x_k'*y_k)/n)*ones(n,<span class="hljs-number">1</span>);-y_k+y1+q];</span><br><span class="line">val=direct_right;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><code>f.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function val =f(z_k,A,q,n)</span><br><span class="line"></span><br><span class="line">%为更好的使用终止条件，而构造的函数</span><br><span class="line">x_k=z_k(<span class="hljs-number">1</span>:n);%x_k 为 z_k 的前n行</span><br><span class="line">y_k=z_k(n+<span class="hljs-number">1</span>:n+n); %y_k 为 z_k 的第n+<span class="hljs-number">1</span>行到第<span class="hljs-number">2</span>n行</span><br><span class="line">dd=ttv(A,&#123;x_k,x_k,x_k&#125;,[<span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>]); </span><br><span class="line">y1=<span class="hljs-keyword">double</span>(dd); %转化为小数格式</span><br><span class="line">f=y_k-y1-q;</span><br><span class="line">val=f;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+
+<p><code>Alpha.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function val = Alpha(z_k,Seita,dz_k,s,A,q,beta,n,rou,aref,ybsl)</span><br><span class="line"></span><br><span class="line">% 求步长 ρ^l 的函数</span><br><span class="line"></span><br><span class="line">FLAG = <span class="hljs-number">1</span>;</span><br><span class="line">check = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">while</span> (FLAG)</span><br><span class="line">    con1=fai(z_k+Seita*(rou^check)*dz_k,A,n,s,q)-fai(z_k,A,n,s,q); %求步长的不等式的左边</span><br><span class="line">    con2=-aref*Seita*(rou^check)*(<span class="hljs-number">1</span>-beta)*s; %求步长的不等式的右边</span><br><span class="line">    %<span class="hljs-keyword">if</span>( norm(f(z_k+Seita*(rou^check)*dz_k,A,q,n),inf)&lt;ybsl)  %初始条件的 z_0 根本就没满足</span><br><span class="line">        <span class="hljs-keyword">if</span> (con1 &lt;= con2 )% (z_k+Seita*(rou^check)*dz_k) &gt; zeros(n+n,<span class="hljs-number">1</span>) &amp; norm(f(z_k+Seita*(rou^check)*dz_k,A,q,n),inf)&lt;ybsl</span><br><span class="line">            val = rou^check;</span><br><span class="line">            <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            check=check+<span class="hljs-number">1</span>;</span><br><span class="line">        end</span><br><span class="line">    %end</span><br><span class="line">end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><code>dH.m</code></p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function val = dH(z_k,A,m,n)</span><br><span class="line">%此函数求 H(x_k,y_k) 的雅克比矩阵     </span><br><span class="line">x_k=z_k(<span class="hljs-number">1</span>:n); %x_k 为 z_k 的前n行</span><br><span class="line">y_k=z_k(n+<span class="hljs-number">1</span>:n+n); %y_k 为 z_k的第n+<span class="hljs-number">1</span>到第n+n行</span><br><span class="line">I=eye(n);</span><br><span class="line">df=-(m<span class="hljs-number">-1</span>)*ttv(A,&#123;x_k,x_k&#125;,[<span class="hljs-number">3</span> <span class="hljs-number">4</span>]);% 一阶导</span><br><span class="line">df1=<span class="hljs-keyword">double</span>(df);</span><br><span class="line">dH=[diag(y_k)    diag(x_k);</span><br><span class="line">    df1               I];</span><br><span class="line">val=dH;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a>, <a class="has-link-grey -link" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" rel="tag">最优化算法</a>, <a class="has-link-grey -link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>, <a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://i.loli.net/2020/01/29/oljdxeKzm2Yc4gt.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://i.loli.net/2020/01/29/ONBQiEp2S9fvhrX.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/10/%E5%AF%92%E5%81%87%E5%AE%89%E6%8E%92/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">寒假安排</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/31/2019%E7%9A%84%E5%B0%8F%E5%B0%8F%E6%80%BB%E7%BB%93/">
+                <span class="level-item">2019的小小总结</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="https://i.loli.net/2019/10/28/7FzcBCG5jUganVS.jpg" alt="xxz">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        xxz
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        无限成长，无限进步
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Tian Jin</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        25
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://xxz666.github.io/about" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-creative-commons"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-weixin"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="微博" href="https://mp.weixin.qq.com/">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/c/">
+            <span class="level-start">
+                <span class="level-item">c++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/python/">
+            <span class="level-start">
+                <span class="level-item">python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
+            <span class="level-start">
+                <span class="level-item">张量互补问题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">
+            <span class="level-start">
+                <span class="level-item">时间变化凸优化</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/c/" style="font-size: 18px;">c++</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 14px;">小程序</a> <a href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/" style="font-size: 10px;">张量互补问题</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 16px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px;">数据结构</a> <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" style="font-size: 16px;">最优化算法</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 12px;">线性表</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">职工管理系统</a> <a href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/" style="font-size: 12px;">边缘碰撞</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记10">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time></div>
+                    <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记10</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记7-9">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time></div>
+                    <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记7-9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记4-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记4-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="欧拉法求解时间变换凸优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T11:49:13.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">欧拉法求解时间变换凸优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">时间变化凸优化</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
+                        <span class="tag">张量互补问题</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="tag">排序算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
+                        <span class="tag">最优化算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="tag">线性表</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="tag">职工管理系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/">
+                        <span class="tag">边缘碰撞</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记10">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time></div>
+                    <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记10</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记7-9">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time></div>
+                    <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记7-9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记4-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记4-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="欧拉法求解时间变换凸优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T11:49:13.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">欧拉法求解时间变换凸优化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">时间变化凸优化</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
+                        <span class="tag">张量互补问题</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="tag">排序算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
+                        <span class="tag">最优化算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="tag">线性表</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="tag">编程</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="tag">职工管理系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/">
+                        <span class="tag">边缘碰撞</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            
+
+
+           </div>
+        </div>
+
+
+
+
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/22.png" alt="梯度下降法解决张量互补问题" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 xxz&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" 
+target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+
+<!-- ѩ����Ч -->
+    <script type="text/javascript">
+      var windowWidth = $(window).width();
+      if (windowWidth > 480) {
+        document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
+      }
+    </script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+
+
+

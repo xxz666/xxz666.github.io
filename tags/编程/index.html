@@ -151,17 +151,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time>
+                <time class="level-item has-text-grey" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 684 个字)
+                    1 分钟 读完 (大约 175 个字)
                 </span>
                 
                 
@@ -170,19 +170,76 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/">关于python的一些学习</a>
+                <a class="has-link-black-ter" href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/">c++primer的学习笔记10</a>
             
         </h1>
         <div class="content">
-            <p>注：首先声明，在这文章只是平时的学习笔记，用于加深记忆以及以后方便查找的功能。</p>
-<h2 id="1-一些基本的常识"><a href="#1-一些基本的常识" class="headerlink" title="1.一些基本的常识"></a>1.一些基本的常识</h2><p>python的一些基本语法结构要比c++简单的多，而且写起来很方便，没有像c++那么多的限制，有了一些c++的基础学起来相对容易一些：</p>
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找，只记录自己不会或者需要补充的内容。</strong></p>
+<h4 id="第十章-泛型算法"><a href="#第十章-泛型算法" class="headerlink" title="第十章 泛型算法"></a>第十章 泛型算法</h4><ol>
+<li>求和的函数accumulate(v.begin(),v.end(),0)初始值为0，v的所有元素的和。</li>
+<li>求相等的函数equal(v1.begin(),v1.end(),v2.begin())。</li>
+<li>仿函数就是在类中重载operator()，谓词就是bool类型的函数或者仿函数（根据参数的个数分为一元谓词和二元谓词）。</li>
+<li>关于lambda函数，没有名字的函数比如：sum=[ ] (int a,int b){return a+b;},调用sum(2,3)</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 671 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/">c++primer的学习笔记7-9</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找，只记录自己不会或者需要补充的内容。</strong></p>
+<h4 id="第七章-类"><a href="#第七章-类" class="headerlink" title="第七章 类"></a>第七章 类</h4><ol>
+<li>在成员函数中加入int func()const{},变成常量成员函数，并且不能再进行更改。</li>
+<li>在类内也有内联函数和函数的重载，与函数的相同，值得注意的是mutable可以把常量成员函数变成可变的成员函数。</li>
+<li>在c11中新加了委托构造函数，让其他的构造函数来执行类成员的初始化操作。</li>
+<li>静态成员只能由静态成员函数附初值以及调用。并且与其他成员一样都有访问权限。只有静态常量成员可以类内初始化。</li>
+</ol>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -205,17 +262,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-28T01:48:37.000Z">2019-10-28</time>
+                <time class="level-item has-text-grey" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">张量互补问题</a>
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1324 个字)
+                    3 分钟 读完 (大约 413 个字)
                 </span>
                 
                 
@@ -224,19 +281,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/10/28/%E5%85%B3%E4%BA%8E%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98%E7%9A%84%E5%85%89%E6%BB%91%E7%89%9B%E9%A1%BF%E6%B3%95/">关于张量互补问题的光滑牛顿法</a>
+                <a class="has-link-black-ter" href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/">c++primer的学习笔记6</a>
             
         </h1>
         <div class="content">
-            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。</strong></p>
-<h2 id="关于张量互补问题的一个算法优化"><a href="#关于张量互补问题的一个算法优化" class="headerlink" title="关于张量互补问题的一个算法优化"></a>关于张量互补问题的一个算法优化</h2><p>前些日子在看一个非光滑牛顿算法解决张量互补问题的论文时，有一点想法并跟导师说了一下，老师说思路可行，但是问题比较小不能表好的论文，但是还是总结到这里吧，万一毕业论文用到呢。</p>
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找，只记录自己不会或者需要补充的内容。</strong></p>
+<h4 id="第六章-函数"><a href="#第六章-函数" class="headerlink" title="第六章 函数"></a>第六章 函数</h4><ol>
+<li>如果函数无需改变引用形参的值，将其声明为常量形参。（在某些地方应该用常量形参，而用了普通的引用形参，则会发生让使用者误认为可以修改，或者没有办法把其他类型的实参传入该参数列表）</li>
+</ol>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size_s</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> s.size();<span class="hljs-comment">//在这个返回值中并没有变化s的值，用常量形参</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/28/%E5%85%B3%E4%BA%8E%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98%E7%9A%84%E5%85%89%E6%BB%91%E7%89%9B%E9%A1%BF%E6%B3%95/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -252,6 +312,417 @@
 
 
 
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 428 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/">c++primer的学习笔记4-5</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找，只记录自己不会或者需要补充的内容。</strong></p>
+<h4 id="第四章-表达式"><a href="#第四章-表达式" class="headerlink" title="第四章 表达式"></a>第四章 表达式</h4><ol>
+<li>逻辑与两个运算对象都为真时，才为真，并且左边运算对象为真时，才计算右侧对象。逻辑或两个运算对象一个为真时，为真。并且左侧运算对象为假时，才计算右侧对象。</li>
+<li>逗号运算符，形式为 表达式，表达式，表达式，返回的值为最后一个表达式的结果，并且中间有公用的变量可以在每个表达式中用，例val=(j++,j+=50,j+100),val=j+1+50+100。</li>
+<li>隐式类型转换，是在做运算的时候程序会根据不同的类型自动转换成需要的结果。</li>
+</ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-15T05:12:19.000Z">2020-04-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 506 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/15/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">c++primer的学习笔记3</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找，只记录自己不会或者需要补充的内容。</strong></p>
+<h4 id="第三章-字符串-向量和数组"><a href="#第三章-字符串-向量和数组" class="headerlink" title="第三章 字符串 向量和数组"></a>第三章 字符串 向量和数组</h4><ol>
+<li>关于初始化string对象，用等号初始化称为拷贝初始化，不使用等号的为直接初始化。</li>
+<li>关于getline读取一整行（与输入运算符相比，getline读取中间的空白符），getline(cin,s),只要遇到换行符就停止。关于s.empty()判断字符串是否为空，s.size()输出对象的长度</li>
+<li>处理string中的字符，在cctype头文件中，常用的几个函数，比如：tolower()把字母都改成小写，toupper()把字母都改成大写。</li></ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/15/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-12T13:05:16.000Z">2020-04-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 616 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/04/12/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01-2/">c++primer的学习笔记1-2</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找，只记录自己不会或者需要补充的内容。</strong></p>
+<h4 id="第一章-开始"><a href="#第一章-开始" class="headerlink" title="第一章 开始"></a>第一章 开始</h4><ol>
+<li>前缀递增运算符 ++a ,先给 a 增加，再用 a。</li>
+<li>读取数量不定的数据用 while, 并注意输入文件以 Ctrl+z 结尾。</li>
+<li>for循环与while循环的优缺点：当循环次数已知用for，循环次数未知用while</li></ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/04/12/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01-2/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-20T14:12:38.000Z">2020-01-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 704 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/20/essential-c-%E5%AD%A6%E4%B9%A0-%E4%B9%8B%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%BC%96%E7%A8%8B/">essential c++ 学习--之面向过程编程</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。由于已经总结了一些视频中的内容，所以只做补充，把不熟悉的内容加进来。</strong></p>
+<h4 id="面向过程的编程"><a href="#面向过程的编程" class="headerlink" title="面向过程的编程"></a>面向过程的编程</h4><p>1 在函数的调用中，有两种参数传递的方式，一种是值传递的方式，一种是地址传递的方式。在之前的视频教程中已经学习过两种方式的区别。已知值传递函数体内部值发生变化，但是主函数并不会发生变化。地址传递函数体内部和主函数都会发生变化。这样就会导致值传递并不能解决课本中的排序问题，需要采用传引用的方式。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/20/essential-c-%E5%AD%A6%E4%B9%A0-%E4%B9%8B%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%BC%96%E7%A8%8B/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-19T13:20:09.000Z">2020-01-19</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/python/">python</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 分钟 读完 (大约 3053 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/19/%E7%94%A8python%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%89%93%E9%A3%9E%E6%9C%BA%E6%B8%B8%E6%88%8F/">用python实现的打飞机游戏</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记，用于加深记忆以及以后方便查找的功能。</strong></p>
+<h2 id="打飞机小游戏的主要功能"><a href="#打飞机小游戏的主要功能" class="headerlink" title="打飞机小游戏的主要功能"></a>打飞机小游戏的主要功能</h2><p>这个是改编网上的视频教程，从头到尾打下来的，有一定的更改，也有一定的不足，主要功能如下：</p>
+<ol>
+<li>飞机发射子弹打敌机，如果发生碰撞，我方和敌方都会爆炸，我方飞机有三条命</li>
+<li>敌机有三种，分为大中小，有不同的血条，会提示玩家敌机的剩余学条数，并且随着分数的增加敌机的数量和运动速度会加快。</li></ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/19/%E7%94%A8python%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%89%93%E9%A3%9E%E6%9C%BA%E6%B8%B8%E6%88%8F/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-16T14:30:39.000Z">2020-01-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 448 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/16/essential-c-%E5%AD%A6%E4%B9%A0-%E4%B9%8Bc-%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">essential c++ 学习--之c++编程基础</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。由于已经总结了一些视频中的内容，所以只做补充，把不熟悉的内容加进来。</strong></p>
+<h4 id="c-编程基础"><a href="#c-编程基础" class="headerlink" title="c++编程基础"></a>c++编程基础</h4><p>1 关于  <code>using namespace std;</code> 使用标准命名空间。<code>std</code> 为标准库的命名空间的总称，命名空间是一种把库名称封装起来的方法，可以防止在程序中多个实体具有相同的名称，导致程序不能区别（比如程序中多个 <code>cout</code>）。<br>2 关于对象的初始化，一般方法为<code>int a=3;</code> 也可以使用内置的构造函数进行初始化<code>int a(3)</code> 这种方法主要应用于复数的初始化：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;complex&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">complex</span>&lt;<span class="hljs-keyword">double</span>&gt; ca(<span class="hljs-number">1</span>,<span class="hljs-number">7</span>);<span class="hljs-comment">//初始化为 1+7i</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/16/essential-c-%E5%AD%A6%E4%B9%A0-%E4%B9%8Bc-%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-05T13:16:33.000Z">2020-01-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">张量互补问题</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 963 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/05/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E8%A7%A3%E5%86%B3%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98%E7%9A%84%E7%A8%8B%E5%BA%8F/">梯度下降法解决张量互补问题</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>首先声明：文章只是平时的学习笔记以及一些心得，用于加深记忆以及以后方便查找。</strong></p>
+<p>前几天，同学再看一篇梯度下降法求解张量互补问题时，发现结构张量的条件可以降低，他想把这篇文章写出来，在用 Matlab 做算法的程序时遇到了困难，我帮他把程序编完了。该文章的主要思路如下（注：在第一篇文章会一直更新关于张量互补问题的基本内容，所以关于张量互补问题在这篇文章就不介绍了）：<br>那篇论文提出的是张量互补问题与一个张量方程组是等价的，也就是下边的内容：</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/05/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E8%A7%A3%E5%86%B3%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98%E7%9A%84%E7%A8%8B%E5%BA%8F/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/tags/%E7%BC%96%E7%A8%8B/page/0/">上一页</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/tags/%E7%BC%96%E7%A8%8B/page/2/">下一页</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link is-current" href="/tags/%E7%BC%96%E7%A8%8B/">1</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/tags/%E7%BC%96%E7%A8%8B/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
+</div>
 </div>
                 
 
@@ -296,7 +767,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        25
                     </p>
                 </div>
             </div>
@@ -306,7 +777,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        7
                     </p>
                 </div>
             </div>
@@ -316,7 +787,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        12
                     </p>
                 </div>
             </div>
@@ -418,9 +889,33 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/c/">
+            <span class="level-start">
+                <span class="level-item">c++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/python/">
+            <span class="level-start">
+                <span class="level-item">python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
             <span class="level-start">
                 <span class="level-item">张量互补问题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">3</span>
@@ -431,12 +926,20 @@
                 <span class="level-item">时间变化凸优化</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
             <span class="level-start">
                 <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">编程</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -452,7 +955,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/" style="font-size: 10px;">张量互补问题</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20px;">数学</a> <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" style="font-size: 20px;">最优化算法</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 15px;">编程</a> <a href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/" style="font-size: 10px;">边缘碰撞</a>
+        <a href="/tags/c/" style="font-size: 18px;">c++</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 14px;">小程序</a> <a href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/" style="font-size: 10px;">张量互补问题</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 16px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px;">数据结构</a> <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" style="font-size: 16px;">最优化算法</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 12px;">线性表</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">职工管理系统</a> <a href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/" style="font-size: 12px;">边缘碰撞</a>
     </div>
 </div>
     
@@ -467,18 +970,18 @@
         
         <article class="media">
             
-            <a href="/2020/01/28/%E5%9C%A8%E6%B5%8B%E8%AF%95vf/" class="media-left">
+            <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在测试vf">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记10">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-28T13:23:30.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/%E5%9C%A8%E6%B5%8B%E8%AF%95vf/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在测试vf</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time></div>
+                    <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记10</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
                     </p>
                 </div>
             </div>
@@ -486,75 +989,75 @@
         
         <article class="media">
             
-            <a href="/2019/12/22/%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F/" class="media-left">
+            <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="时间变化凸优化程序">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记7-9">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T01:50:05.000Z">2019-12-22</time></div>
-                    <a href="/2019/12/22/%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">时间变化凸优化程序</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time></div>
+                    <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记7-9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记4-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记4-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="欧拉法求解时间变换凸优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T11:49:13.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">欧拉法求解时间变换凸优化</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">时间变化凸优化</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/19/%E7%88%AC%E5%8F%96QQ%E7%BE%A4%E6%88%90%E5%91%98%E7%9A%84%E4%BF%A1%E6%81%AF/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="爬取QQ群成员的信息">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T11:20:29.000Z">2019-11-19</time></div>
-                    <a href="/2019/11/19/%E7%88%AC%E5%8F%96QQ%E7%BE%A4%E6%88%90%E5%91%98%E7%9A%84%E4%BF%A1%E6%81%AF/" class="title has-link-black-ter is-size-6 has-text-weight-normal">爬取QQ群成员的信息</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于python的一些学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于python的一些学习</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/29/%E5%85%B3%E4%BA%8Ex%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%9A%84%E5%85%89%E6%BB%91%E5%87%BD%E6%95%B0/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于 x 绝对值的光滑函数">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T08:57:48.000Z">2019-10-29</time></div>
-                    <a href="/2019/10/29/%E5%85%B3%E4%BA%8Ex%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%9A%84%E5%85%89%E6%BB%91%E5%87%BD%E6%95%B0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 x 绝对值的光滑函数</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">张量互补问题</a>
                     </p>
                 </div>
             </div>
@@ -572,12 +1075,45 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/01/">
                 <span class="level-start">
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -588,7 +1124,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -599,7 +1135,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -629,6 +1165,20 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
                         <span class="tag">张量互补问题</span>
                         <span class="tag is-grey">1</span>
@@ -636,37 +1186,65 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="tag">排序算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/">
                         <span class="tag">数学</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
                         <span class="tag">最优化算法</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="tag">线性表</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="tag">职工管理系统</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/">
                         <span class="tag">边缘碰撞</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -694,18 +1272,18 @@
         
         <article class="media">
             
-            <a href="/2020/01/28/%E5%9C%A8%E6%B5%8B%E8%AF%95vf/" class="media-left">
+            <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在测试vf">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记10">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-28T13:23:30.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/%E5%9C%A8%E6%B5%8B%E8%AF%95vf/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在测试vf</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T09:58:21.000Z">2020-05-13</time></div>
+                    <a href="/2020/05/13/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B010/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记10</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
                     </p>
                 </div>
             </div>
@@ -713,75 +1291,75 @@
         
         <article class="media">
             
-            <a href="/2019/12/22/%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F/" class="media-left">
+            <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="时间变化凸优化程序">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记7-9">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-22T01:50:05.000Z">2019-12-22</time></div>
-                    <a href="/2019/12/22/%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">时间变化凸优化程序</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-07T08:33:46.000Z">2020-05-07</time></div>
+                    <a href="/2020/05/07/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-9/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记7-9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记6">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-29T06:49:37.000Z">2020-04-29</time></div>
+                    <a href="/2020/04/29/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B06/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记6</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="c++primer的学习笔记4-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-24T12:44:54.000Z">2020-04-24</time></div>
+                    <a href="/2020/04/24/c-primer%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">c++primer的学习笔记4-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/c/">c++</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="欧拉法求解时间变换凸优化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-20T11:49:13.000Z">2020-04-20</time></div>
+                    <a href="/2020/04/20/%E6%AC%A7%E6%8B%89%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%B6%E9%97%B4%E5%8F%98%E6%8D%A2%E5%87%B8%E4%BC%98%E5%8C%96/" class="title has-link-black-ter is-size-6 has-text-weight-normal">欧拉法求解时间变换凸优化</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E6%97%B6%E9%97%B4%E5%8F%98%E5%8C%96%E5%87%B8%E4%BC%98%E5%8C%96/">时间变化凸优化</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/19/%E7%88%AC%E5%8F%96QQ%E7%BE%A4%E6%88%90%E5%91%98%E7%9A%84%E4%BF%A1%E6%81%AF/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="爬取QQ群成员的信息">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-19T11:20:29.000Z">2019-11-19</time></div>
-                    <a href="/2019/11/19/%E7%88%AC%E5%8F%96QQ%E7%BE%A4%E6%88%90%E5%91%98%E7%9A%84%E4%BF%A1%E6%81%AF/" class="title has-link-black-ter is-size-6 has-text-weight-normal">爬取QQ群成员的信息</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于python的一些学习">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-09T13:00:15.000Z">2019-11-09</time></div>
-                    <a href="/2019/11/09/%E5%85%B3%E4%BA%8Epython%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于python的一些学习</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/29/%E5%85%B3%E4%BA%8Ex%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%9A%84%E5%85%89%E6%BB%91%E5%87%BD%E6%95%B0/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于 x 绝对值的光滑函数">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-29T08:57:48.000Z">2019-10-29</time></div>
-                    <a href="/2019/10/29/%E5%85%B3%E4%BA%8Ex%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%9A%84%E5%85%89%E6%BB%91%E5%87%BD%E6%95%B0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 x 绝对值的光滑函数</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">张量互补问题</a>
                     </p>
                 </div>
             </div>
@@ -799,12 +1377,45 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/01/">
                 <span class="level-start">
                     <span class="level-item">一月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -815,7 +1426,7 @@
                     <span class="level-item">十二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -826,7 +1437,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -856,6 +1467,20 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/c/">
+                        <span class="tag">c++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">
+                        <span class="tag">小程序</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E5%BC%A0%E9%87%8F%E4%BA%92%E8%A1%A5%E9%97%AE%E9%A2%98/">
                         <span class="tag">张量互补问题</span>
                         <span class="tag is-grey">1</span>
@@ -863,37 +1488,65 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <span class="tag">排序算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E5%AD%A6/">
                         <span class="tag">数学</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
                         <span class="tag">最优化算法</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+                        <span class="tag">线性表</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="tag">编程</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">15</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%81%8C%E5%B7%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="tag">职工管理系统</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E8%BE%B9%E7%BC%98%E7%A2%B0%E6%92%9E/">
                         <span class="tag">边缘碰撞</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
